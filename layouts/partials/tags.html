@@ -2,8 +2,10 @@
 {{ $tagsLen := len $.Params.tags }}
 {{ if gt $tagsLen 0 }}
 <div class="post-tags">
+  Tags:
   {{ range $k, $v := $.Params.tags }}
   <a href="{{ (printf "%s/%s" ($.Site.GetPage "tags").Permalink $v) | relURL }}">{{ . }}</a>
+  {{ if lt $k (sub $tagsLen 1)}}, {{ end }}
   {{ end }}
 </div>
 {{ end }}
